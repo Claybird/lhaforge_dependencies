@@ -49,11 +49,9 @@
     <ClCompile Include="source\mz_strm_wzaes.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\mz_compat.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\mz_crypt_winvista.c" />
     <ClCompile Include="source\mz_crypt_winxp.c" />
+    <ClCompile Include="source\compat\ioapi.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\mz.h">
@@ -104,15 +102,7 @@
     <ClInclude Include="source\mz_strm_wzaes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\mz_compat.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="zip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="unzip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="source\compat\ioapi.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
