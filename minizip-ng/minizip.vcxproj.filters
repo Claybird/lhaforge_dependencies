@@ -51,7 +51,7 @@
     </ClCompile>
     <ClCompile Include="source\mz_crypt_winvista.c" />
     <ClCompile Include="source\mz_crypt_winxp.c" />
-    <ClCompile Include="source\compat\ioapi.c" />
+    <ClCompile Include="source\mz_compat.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\mz.h">
@@ -102,7 +102,9 @@
     <ClInclude Include="source\mz_strm_wzaes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\compat\ioapi.h" />
+    <ClInclude Include="source\mz_compat.h" />
+    <ClInclude Include="zip.h" />
+    <ClInclude Include="unzip.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
