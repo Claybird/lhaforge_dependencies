@@ -135,7 +135,9 @@
     <ClCompile Include="source\mz_crypt_winxp.c" />
     <ClCompile Include="source\mz_strm_pkcrypt.c" />
     <ClCompile Include="source\mz_strm_wzaes.c" />
-    <ClCompile Include="source\mz_compat.c" />
+    <ClCompile Include="source\compat\ioapi.c" />
+    <ClCompile Include="source\compat\unzip.c" />
+    <ClCompile Include="source\compat\zip.c" />
     <ClInclude Include="source\mz.h" />
     <ClInclude Include="source\mz_os.h" />
     <ClInclude Include="source\mz_crypt.h" />
@@ -152,9 +154,9 @@
     <ClInclude Include="source\mz_strm_zstd.h" />
     <ClInclude Include="source\mz_strm_pkcrypt.h" />
     <ClInclude Include="source\mz_strm_wzaes.h" />
-    <ClInclude Include="source\mz_compat.h" />
-    <ClInclude Include="zip.h" />
-    <ClInclude Include="unzip.h" />
+    <ClInclude Include="source\compat\ioapi.h" />
+    <ClInclude Include="source\compat\unzip.h" />
+    <ClInclude Include="source\compat\zip.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bzip2\libbz2.vcxproj">
