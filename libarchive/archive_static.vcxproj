@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
-  </PropertyGroup>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -56,7 +54,6 @@
       <AdditionalOptions>%(AdditionalOptions) /w14062 /w14254 /w14295 /w14296 /w14389 /w14505 /w14514 /w14702 /w14706</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <CompileAs>CompileAsC</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -142,8 +139,6 @@
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_entry_stat.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_entry_strmode.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_entry_xattr.c" />
-    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_getdate.c" />
-    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_getdate.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_hmac.c" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_hmac_private.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_match.c" />
@@ -153,6 +148,7 @@
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_options_private.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_pack_dev.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_pack_dev.c" />
+    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_parse_date.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_pathmatch.c" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_pathmatch.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform.h" />
@@ -221,6 +217,8 @@
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_string.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_string_composition.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_string_sprintf.c" />
+    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_time.c" />
+    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_time_private.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_util.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_version_details.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_virtual.c" />
@@ -284,29 +282,6 @@
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_blake2sp_ref.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_blake2s_ref.c" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\bzip2\libbz2.vcxproj">
-      <Project>{b21147c0-d52f-406c-8c55-22868335ada3}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libcharset\libcharset.vcxproj">
-      <Project>{fddff1f1-5dc5-4879-8bee-cf8a6b2eb855}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\lz4\liblz4.vcxproj">
-      <Project>{9092c5cc-3e71-41b3-bf68-4a7bdd8a5476}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\win-iconv\win-iconv.vcxproj">
-      <Project>{31c02a3c-757f-4dcc-8f69-280c43df14d6}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\xzutils\liblzma.vcxproj">
-      <Project>{12728250-16ec-4dc6-94d7-e21dd88947f8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\zlib-ng\zlibstatic.vcxproj">
-      <Project>{2c895043-853b-3bba-b2d7-dedd58611d69}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\zstd\libzstd.vcxproj">
-      <Project>{8bfd8150-94d5-4bf9-8a50-7bd9929a0850}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

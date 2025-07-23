@@ -37,9 +37,6 @@
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_entry_xattr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_getdate.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_hmac.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -376,6 +373,8 @@
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_read_support_filter_by_code.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_write_set_format_cpio_binary.c" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_write_set_format_cpio_odc.c" />
+    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_parse_date.c" />
+    <ClCompile Include="$(ProjectDir)\source\libarchive\archive_time.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_acl_private.h">
@@ -403,9 +402,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_entry_private.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_getdate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_hmac_private.h">
@@ -486,6 +482,7 @@
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_time_private.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
