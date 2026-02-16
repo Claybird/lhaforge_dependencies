@@ -483,6 +483,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_time_private.h" />
+    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform_stat.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

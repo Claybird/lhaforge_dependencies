@@ -64,7 +64,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;LIBARCHIVE_STATIC;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;LIBARCHIVE_STATIC;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;LZMA_API_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
@@ -153,6 +153,7 @@
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_pathmatch.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform_acl.h" />
+    <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform_stat.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_platform_xattr.h" />
     <ClInclude Include="$(ProjectDir)\source\libarchive\archive_ppmd_private.h" />
     <ClCompile Include="$(ProjectDir)\source\libarchive\archive_ppmd8.c" />
