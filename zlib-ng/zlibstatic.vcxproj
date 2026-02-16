@@ -92,7 +92,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;ZLIB_DEBUG;ZLIB_COMPAT;WITH_GZFILEOP;NO_FSEEKO;HAVE_BUILTIN_ASSUME_ALIGNED;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;X86_FEATURES;X86_HAVE_XSAVE_INTRIN;X86_SSE2;X86_SSSE3;X86_SSE42;X86_PCLMULQDQ_CRC;X86_AVX2;X86_AVX512;X86_AVX512VNNI;X86_VPCLMULQDQ_CRC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;ZLIB_DEBUG;ZLIB_COMPAT;WITH_GZFILEOP;NO_FSEEKO;HAVE_CPUID_MS;HAVE_BUILTIN_ASSUME_ALIGNED;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WITH_OPTIM;X86_FEATURES;X86_HAVE_XSAVE_INTRIN;X86_SSE2;X86_SSSE3;X86_SSE41;X86_SSE42;X86_PCLMULQDQ_CRC;X86_AVX2;X86_AVX512;X86_AVX512VNNI;X86_VPCLMULQDQ_CRC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <AdditionalOptions>/source-charset:utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -125,7 +125,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ZLIB_COMPAT;WITH_GZFILEOP;NO_FSEEKO;HAVE_BUILTIN_ASSUME_ALIGNED;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;X86_FEATURES;X86_HAVE_XSAVE_INTRIN;X86_SSE2;X86_SSSE3;X86_SSE42;X86_PCLMULQDQ_CRC;X86_AVX2;X86_AVX512;X86_AVX512VNNI;X86_VPCLMULQDQ_CRC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;ZLIB_COMPAT;WITH_GZFILEOP;NO_FSEEKO;HAVE_CPUID_MS;HAVE_BUILTIN_ASSUME_ALIGNED;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;WITH_OPTIM;X86_FEATURES;X86_HAVE_XSAVE_INTRIN;X86_SSE2;X86_SSSE3;X86_SSE41;X86_SSE42;X86_PCLMULQDQ_CRC;X86_AVX2;X86_AVX512;X86_AVX512VNNI;X86_VPCLMULQDQ_CRC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
@@ -187,11 +187,9 @@
   <ItemGroup>
     <ClCompile Include="$(ProjectDir)\source\arch\generic\adler32_c.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\generic\adler32_fold_c.c" />
-    <ClCompile Include="$(ProjectDir)\source\arch\generic\chunkset_c.c" />
-    <ClCompile Include="$(ProjectDir)\source\arch\generic\compare256_c.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\generic\crc32_braid_c.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\generic\crc32_fold_c.c" />
-    <ClCompile Include="$(ProjectDir)\source\arch\generic\slide_hash_c.c" />
+    <ClCompile Include="$(ProjectDir)\source\arch\generic\compare256_c.c" />
     <ClCompile Include="$(ProjectDir)\source\adler32.c" />
     <ClCompile Include="$(ProjectDir)\source\compress.c" />
     <ClCompile Include="$(ProjectDir)\source\crc32.c" />
@@ -213,6 +211,7 @@
     <ClCompile Include="$(ProjectDir)\source\trees.c" />
     <ClCompile Include="$(ProjectDir)\source\uncompr.c" />
     <ClCompile Include="$(ProjectDir)\source\zutil.c" />
+    <ClCompile Include="$(ProjectDir)\source\arch\generic\crc32_chorba_c.c" />
     <ClCompile Include="$(ProjectDir)\source\cpu_features.c" />
     <ClInclude Include="$(ProjectDir)\source\arch\generic\generic_functions.h" />
     <ClInclude Include="$(ProjectDir)\source\arch\x86\x86_functions.h" />
@@ -221,10 +220,12 @@
     <ClInclude Include="$(ProjectDir)\source\arch\x86\adler32_avx512_p.h" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\x86_features.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\chunkset_sse2.c" />
+    <ClCompile Include="$(ProjectDir)\source\arch\x86\chorba_sse2.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\compare256_sse2.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\slide_hash_sse2.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\adler32_ssse3.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\chunkset_ssse3.c" />
+    <ClCompile Include="$(ProjectDir)\source\arch\x86\chorba_sse41.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\adler32_sse42.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\crc32_pclmulqdq.c" />
     <ClCompile Include="$(ProjectDir)\source\arch\x86\slide_hash_avx2.c">
@@ -263,6 +264,12 @@
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
     </ClCompile>
+    <ClCompile Include="$(ProjectDir)\source\arch\x86\compare256_avx512.c">
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
+    </ClCompile>
     <ClCompile Include="$(ProjectDir)\source\arch\x86\adler32_avx512_vnni.c">
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
@@ -281,9 +288,10 @@
     <ClInclude Include="$(ProjectDir)\source\arch\generic\chunk_permute_table.h" />
     <ClInclude Include="$(ProjectDir)\source\arch\generic\compare256_p.h" />
     <ClInclude Include="$(ProjectDir)\source\adler32_p.h" />
+    <ClInclude Include="$(ProjectDir)\source\arch_functions.h" />
     <ClInclude Include="$(ProjectDir)\source\chunkset_tpl.h" />
     <ClInclude Include="$(ProjectDir)\source\compare256_rle.h" />
-    <ClInclude Include="$(ProjectDir)\source\arch_functions.h" />
+    <ClInclude Include="$(ProjectDir)\source\crc32.h" />
     <ClInclude Include="$(ProjectDir)\source\crc32_braid_p.h" />
     <ClInclude Include="$(ProjectDir)\source\crc32_braid_comb_p.h" />
     <ClInclude Include="$(ProjectDir)\source\crc32_braid_tbl.h" />
@@ -302,11 +310,13 @@
     <ClInclude Include="$(ProjectDir)\source\trees_tbl.h" />
     <ClInclude Include="$(ProjectDir)\source\zbuild.h" />
     <ClInclude Include="$(ProjectDir)\source\zendian.h" />
+    <ClInclude Include="$(ProjectDir)\source\zmemory.h" />
     <ClInclude Include="$(ProjectDir)\source\zutil.h" />
+    <ClInclude Include="$(ProjectDir)\source\zutil_p.h" />
     <ClInclude Include="$(ProjectDir)\source\cpu_features.h" />
     <ClInclude Include="$(ProjectDir)\source\gzguts.h" />
     <ClCompile Include="$(ProjectDir)\source\gzlib.c" />
-    <ClCompile Include="$(ProjectDir)\gzread.c" />
+    <ClCompile Include="$(ProjectDir)\source\gzread.c" />
     <ClCompile Include="$(ProjectDir)\source\gzwrite.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
